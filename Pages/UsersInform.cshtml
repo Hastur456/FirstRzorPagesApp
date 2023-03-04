@@ -1,0 +1,18 @@
+﻿@page
+@model FirstRazorPages.Pages.UsersInformModel
+@{
+}
+
+<h1>Список людей</h1>
+
+<a asp-page="/Create">Добавить человека</a>
+
+<h1>Имя возраст</h1>
+
+@foreach (var user in Model.Users) {
+	<form method="post">
+		<label>@user.UserName @user.Age лет</label>
+		<a asp-page="Edit" asp-route-id="@user.Id">Изменить</a>
+		<input type="submit" value="Удалить" asp-page-handler="delete" asp-route-id="@user.Id"/>
+	</form>
+}
